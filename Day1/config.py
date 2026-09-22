@@ -11,7 +11,7 @@ PROVIDER = os.getenv("PROVIDER", "groq").strip().lower()
 if PROVIDER == "groq":
     BASE_URL = "https://api.groq.com/openai/v1"
     API_KEY = os.getenv("GROQ_API_KEY")
-    MODEL = os.getenv("MODEL", "openai/gpt-oss-20b")
+    MODEL = os.getenv("MODEL", "openai/gpt-oss-120b")
 
 elif PROVIDER == "ollama":
     BASE_URL = "http://localhost:11434/v1"
@@ -21,7 +21,7 @@ elif PROVIDER == "ollama":
 elif PROVIDER == "huggingface":
     BASE_URL = "https://router.huggingface.co/v1"
     API_KEY = os.getenv("HF_TOKEN")
-    MODEL = os.getenv("MODEL", "openai/gpt-oss-20b")
+    MODEL = os.getenv("MODEL", "openai/gpt-oss-120b")
 
 else:
     raise SystemExit(f"Unknown PROVIDER '{PROVIDER}'. Use groq, ollama or huggingface.")
