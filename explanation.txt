@@ -1,0 +1,127 @@
+AI WORKSHOP DAY 1 - EXPLANATION
+
+Project: Comparing an LLM Chatbot, Rule-Based Workflow, and AI Agent
+
+1. OBJECTIVE
+
+The objective of this project is to understand the difference between:
+- A basic LLM chatbot
+- A rule-based workflow
+- An AI agent using tools
+
+The project uses college course fee data to compare how each system handles questions.
+
+2. COURSE DATA
+
+The project contains the following private course fee data:
+
+CS101 = Rs. 12,000
+AI202 = Rs. 18,000
+DS303 = Rs. 15,000
+
+3. SYSTEM 1 - CHATBOT
+
+File: chatbot.py
+
+The chatbot directly sends the user's question to the LLM.
+
+It does not have access to the private course fee data.
+
+Therefore, when asked about course fees, the model may not know the correct answer.
+
+However, for general questions such as writing a welcome message, the chatbot can provide a useful response.
+
+4. SYSTEM 2 - RULE-BASED WORKFLOW
+
+File: workflow.py
+
+The workflow uses predefined Python rules instead of an LLM.
+
+It can correctly answer some predefined course fee questions.
+
+For example:
+
+AI202 = Rs. 18,000
+
+CS101 + AI202 = Rs. 30,000
+
+After a 10% scholarship:
+
+Rs. 30,000 × 0.90 = Rs. 27,000
+
+The main limitation is that the workflow is rigid. If the user changes the wording or asks a question for which no rule exists, the workflow may fail.
+
+5. TOOLS
+
+File: tools.py
+
+Two tools are provided to the AI agent:
+
+1. get_course_fee
+   - Looks up the fee of a course from the private course data.
+
+2. calculator
+   - Performs arithmetic calculations safely.
+
+The calculator does not use eval(). It uses Python's AST module and only allows basic arithmetic operations.
+
+6. SYSTEM 3 - AI AGENT
+
+File: agent.py
+
+The AI agent combines an LLM with tools.
+
+The agent decides when a tool is required.
+
+For example, for:
+
+"What is the fee for AI202?"
+
+The agent can call:
+
+get_course_fee("AI202")
+
+For:
+
+"What is the total fee for CS101 and AI202 after a 10% scholarship?"
+
+The agent can:
+1. Get the fee of CS101.
+2. Get the fee of AI202.
+3. Use the calculator to calculate the total after the scholarship.
+4. Generate the final answer.
+
+This demonstrates the basic REASON -> ACT -> OBSERVE loop of an AI agent.
+
+7. CHALLENGE
+
+File: challenge.py
+
+The challenge asks:
+
+"I can pay Rs. 30,000. Which two courses can I take together within this budget?"
+
+The available course combinations are checked using Python.
+
+The combinations within the Rs. 30,000 budget are:
+
+CS101 + AI202 = Rs. 30,000
+CS101 + DS303 = Rs. 27,000
+
+AI202 + DS303 = Rs. 33,000, so it is above the budget.
+
+8. KEY LEARNING
+
+The three systems have different strengths.
+
+The LLM chatbot is flexible but does not have access to the private course data.
+
+The rule-based workflow is predictable and accurate for predefined cases but is rigid.
+
+The AI agent combines an LLM with tools, allowing it to handle more flexible questions while accessing reliable external or private information.
+
+9. CONCLUSION
+
+This project demonstrates the progression from a basic LLM chatbot to a rule-based workflow and finally to an AI agent.
+
+The main idea learned from this workshop is that an AI agent can use tools to obtain reliable information and perform actions instead of depending only on the knowledge stored inside the language model.
