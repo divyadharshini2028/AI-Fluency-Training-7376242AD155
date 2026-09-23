@@ -1,0 +1,116 @@
+DAY 2 – AI REASONING TECHNIQUES
+================================
+
+1. ReAct
+---------
+
+ReAct stands for Reasoning and Acting.
+
+In this lab, the agent uses available tools to solve a course-fee problem.
+
+The available tools are:
+
+- get_course_fee() – retrieves the fee of a course.
+- calculator() – performs arithmetic calculations.
+
+For the fee comparison problem:
+
+CS101 = Rs. 12,000
+AI202 = Rs. 18,000
+DS303 = Rs. 15,000
+
+Option 1:
+CS101 + AI202 with 10% scholarship
+
+(12000 + 18000) × 0.90
+= Rs. 27,000
+
+Option 2:
+All three courses with 25% scholarship
+
+(12000 + 18000 + 15000) × 0.75
+= Rs. 33,750
+
+Difference:
+
+33750 - 27000
+= Rs. 6,750
+
+Therefore, the first option is cheaper by Rs. 6,750.
+
+
+2. Chain-of-Thought
+-------------------
+
+Chain-of-Thought (CoT) asks the model to solve a problem step by step.
+
+The lab compares:
+
+- Without CoT: only the final answer is requested.
+- With CoT: the model is asked to show numbered steps and calculations.
+
+The three questions test:
+
+1. Course fee instalment calculation
+2. Student sittings in a computer lab
+3. Height comparison
+
+Correct answers:
+
+- Each instalment = Rs. 9,562.50
+- Student sittings = 90
+- Tallest = Ravi
+- Shortest = Priya
+
+CoT provides more detailed reasoning, while direct answers are shorter.
+
+
+3. Self-Consistency
+-------------------
+
+Self-Consistency runs the same reasoning problem multiple times.
+
+In this experiment:
+
+- Number of runs = 5
+- Temperature = 0.8
+
+The five runs produced different text formats, but all represented the same numerical answer:
+
+Rs. 9,562.50 per instalment.
+
+The program normalizes the numerical answers so that formats such as:
+
+9562.5
+9,562.5
+9,562.50
+Rs. 9,562.50
+
+are treated as the same answer.
+
+Result:
+
+Majority answer = 5 of 5 runs
+Answer = Rs. 9,562.50 per instalment.
+
+
+4. Model Used
+-------------
+
+Provider: Groq
+
+Model: openai/gpt-oss-120b
+
+The model was used for the ReAct, Chain-of-Thought, and Self-Consistency experiments.
+
+
+5. Learning Outcome
+-------------------
+
+This lab demonstrated three approaches to AI reasoning:
+
+- ReAct allows an AI agent to use tools.
+- Chain-of-Thought produces step-by-step reasoning.
+- Self-Consistency checks repeated reasoning results and identifies the common answer.
+
+The experiments also showed that different textual responses can represent the same numerical answer, so answer normalization can be useful when comparing model outputs.
